@@ -1,0 +1,208 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos para el header y la navegación */
+header {
+    background-color: #000;
+    padding: 10px;
+    position: relative;
+    z-index: 100;
+}
+
+nav.desktop-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+}
+
+.nav-left, .nav-right, .nav-center {
+    display: flex;
+    align-items: center;
+}
+
+.nav-left i, .nav-right i, .nav-center button {
+    margin-right: 15px;
+}
+
+.nav-left span {
+    margin-left: 10px;
+}
+
+/* Botón de Durango */
+.nav-center button {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilos de los íconos de ajustes y salir */
+.nav-right i {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+/* Menú hamburguesa */
+.menu-toggle {
+    display: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Estilos de menú responsivo */
+.responsive-menu {
+    display: none;
+    flex-direction: column;
+    background-color: #000;
+    padding: 10px;
+    color: #fff;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+}
+
+.responsive-menu.active {
+    display: flex;
+}
+
+#map {
+    height: 500px;
+    width: 100%;
+}
+
+#category-menu {
+    position: absolute;
+    bottom: 190px; /* Coloca el menú en la parte inferior */
+    left: 30px;   /* Mantiene el menú en la parte izquierda */
+    z-index: 1000;
+    background-color: rgb(0, 0, 0);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column; /* Alinea los botones verticalmente */
+}
+
+#category-menu button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    margin-bottom: 5px; /* Espacio entre los botones */
+    cursor: pointer;
+    width: 120px; /* Ajusta el ancho de los botones si es necesario */
+}
+
+#category-menu button:hover {
+    background-color: #555;
+}
+
+
+/* Responsividad */
+@media (max-width: 768px) {
+    nav.desktop-menu {
+        display: none;
+    }
+    
+    .menu-toggle {
+        display: block;
+        font-size: 24px;
+    }
+
+    .responsive-menu {
+        display: none;
+    }
+    
+    .responsive-menu.active {
+        display: flex;
+    }
+}
+
+.icon-section {
+    display: flex;
+    justify-content: center; /* Centra los íconos horizontalmente */
+    background-color: #f0f0f0; /* Fondo gris */
+    padding: 35px;
+    margin-top: 10px;
+}
+.icon-section i {
+    font-size: 50px; /* Cambia el tamaño de los íconos */
+    margin: 0 50px;  /* Ajusta el espacio entre íconos */
+}
+
+
+
+.icon-section i:hover {
+    color: #000; /* Cambia el color cuando se pasa el mouse por encima */
+}
+
+.blackdiv {
+    background-color: black; /* Fondo negro */
+    margin-top: 35px;
+    color: white; /* Color del texto blanco */
+    font-size: 3em; /* Aumenta el tamaño de la fuente */
+    text-align: center; /* Centra el texto horizontalmente */
+    padding: 20px; /* Espaciado interno para que el texto no toque los bordes */
+}
+
+.container {
+    display: flex; /* Usar flexbox para alinear los cuadros en una fila */
+    justify-content: center; /* Centra los cuadros horizontalmente */
+    align-items: flex-start; /* Alinea los cuadros al inicio verticalmente */
+    gap: 20px; /* Espacio entre los cuadros */
+    margin: 20px; /* Margen externo para el contenedor */
+}
+
+.box {
+    background-color: white; /* Fondo blanco para los cuadros */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 10px; /* Bordes redondeados */
+    text-align: center; /* Centra el texto */
+    padding: 10px; /* Espaciado interno */
+    width: 200px; /* Ancho fijo de los cuadros */
+}
+
+.middle-box {
+    margin-top: -20px; /* Ajusta este valor para levantar el cuadro del medio */
+}
+
+.box img {
+    width: 100%; /* La imagen ocupa todo el ancho del cuadro */
+    border-radius: 10px 10px 0 0; /* Bordes redondeados solo en la parte superior */
+}
+
+.flex-container {
+    display: flex; /* Usar flexbox para alinear los elementos en una fila */
+    align-items: center; /* Centra verticalmente el contenido */
+    margin: 20px; /* Margen externo para el contenedor */
+}
+
+.image-container {
+    flex: 1; /* La imagen ocupa una parte del contenedor */
+    margin-right: 20px; /* Espacio entre la imagen y el texto */
+}
+
+.image-container img {
+    width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+    border-radius: 10px; /* Bordes redondeados (opcional) */
+}
+
+.text-container {
+    flex: 1.5; /* El texto ocupa más espacio que la imagen */
+}
+
+.text-container h2 {
+    margin: 0 0 10px 0; /* Margen inferior para el título */
+}
+
+.text-container p {
+    line-height: 1.5; /* Espaciado entre líneas del texto */
+}
