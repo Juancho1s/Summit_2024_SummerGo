@@ -7,9 +7,14 @@ headers = {
     'x-rapidapi-host': "local-business-data.p.rapidapi.com"
 }
 
-conn.request("GET", "/search?query=Hoteles%20en%20Durango%20Francisco%2C%20USA&limit=20&lat=37.359428&lng=-121.925337&zoom=13&language=en&region=us&extract_emails_and_contacts=false", headers=headers)
+query = ""
+
+conn.request("GET", f"/search?query={query}&limit=10&zoom=2&language=es&region=mx&extract_emails_and_contacts=false", headers=headers)
 
 res = conn.getresponse()
 data = res.read()
 
 print(data.decode("utf-8"))
+
+
+conn.request("GET", "/search-in-area?query=pizza&lat=37.359428&lng=-121.925337&zoom=13&limit=20&language=en&region=us&extract_emails_and_contacts=false", headers=headers)
