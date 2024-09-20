@@ -1,165 +1,169 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mapa con Localización en Tiempo Real</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav class="desktop-menu">
-            <div class="nav-left">
-                <i class="fas fa-user"></i>
-                <span>Nombre de Usuario</span>
-            </div>
-            <div class="nav-center">
-                <button>Durango Dgo</button>
-            </div>
-            <div class="nav-right">
-                <i class="fas fa-cog"></i>
-                <i class="fas fa-sign-out-alt"></i>
-            </div>
-        </nav>
-        
-        <!-- Botón hamburguesa para menú responsivo -->
-        <div class="menu-toggle" id="menu-toggle">
-            <i class="fas fa-bars"></i>
+      <nav class="desktop-menu">
+        <div class="nav-left">
+          <i class="fas fa-user"></i>
+          <span>Nombre de Usuario</span>
         </div>
-        
-        <!-- Menú responsivo -->
-        <div class="responsive-menu" id="responsive-menu">
-            <div class="nav-left">
-                <i class="fas fa-user"></i>
-                <span>Nombre de Usuario</span>
-            </div>
-            <div class="nav-center">
-                <button>Durango Dgo</button>
-            </div>
-            <div class="nav-right">
-                <i class="fas fa-cog"></i>
-                <i class="fas fa-sign-out-alt"></i>
-            </div>
+        <div class="nav-center">
+          <button>Durango Dgo</button>
         </div>
+        <div class="nav-right">
+          <i class="fas fa-cog"></i>
+          <i class="fas fa-sign-out-alt"></i>
+        </div>
+      </nav>
+
+      <!-- Botón hamburguesa para menú responsivo -->
+      <div class="menu-toggle" id="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+
+      <!-- Menú responsivo -->
+      <div class="responsive-menu" id="responsive-menu">
+        <div class="nav-left">
+          <i class="fas fa-user"></i>
+          <span>Nombre de Usuario</span>
+        </div>
+        <div class="nav-center">
+          <button>Durango Dgo</button>
+        </div>
+        <div class="nav-right">
+          <i class="fas fa-cog"></i>
+          <i class="fas fa-sign-out-alt"></i>
+        </div>
+      </div>
     </header>
 
     <div id="map"></div>
-     
 
     <div id="category-menu">
-        <button onclick="filtrarPuntos('Restaurantes')">Restaurantes</button>
-        <button onclick="filtrarPuntos('Antros')">Antros</button>
-        <button onclick="filtrarPuntos('Museos')">Museos</button>
+      <button onclick="filtrarPuntos('Restaurantes')">Restaurantes</button>
+      <button onclick="filtrarPuntos('Antros')">Antros</button>
+      <button onclick="filtrarPuntos('Museos')">Museos</button>
     </div>
 
     <div class="icon-section">
-        <i class="fas fa-utensils fa-2x mr-2"></i> <!-- Icono de restaurante -->
-        <i class="fas fa-tree fa-2x mr-2"></i> <!-- Icono de naturaleza -->
-        <i class="fas fa-hotel fa-2x mr-2"></i> <!-- Icono de hotel -->
-        <i class="fas fa-landmark fa-2x mr-2"></i> <!-- Icono de monumento -->
-        <i class="fas fa-mountain fa-2x mr-2"></i> <!-- Icono de montaña -->
+      <i class="fas fa-utensils fa-2x mr-2"></i>
+      <!-- Icono de restaurante -->
+      <i class="fas fa-tree fa-2x mr-2"></i>
+      <!-- Icono de naturaleza -->
+      <i class="fas fa-hotel fa-2x mr-2"></i>
+      <!-- Icono de hotel -->
+      <i class="fas fa-landmark fa-2x mr-2"></i>
+      <!-- Icono de monumento -->
+      <i class="fas fa-mountain fa-2x mr-2"></i>
+      <!-- Icono de montaña -->
     </div>
-    
-    <div class="blackdiv">¡Tu guía personalizada para <br>explorar el mundo!</div>
 
+    <div class="blackdiv">
+      ¡Tu guía personalizada para <br />explorar el mundo!
+    </div>
 
     <div class="flex-container">
-        <div class="image-container">
-            <img src="imagen_grande.jpg" alt="Imagen Grande">
-        </div>
-        <div class="text-container">
-            <h2>Título del Texto</h2>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem nostrum repudiandae nesciunt odit natus, ut praesentium sapiente officia ipsam exercitationem quibusdam eum impedit iusto, consequuntur vitae tempora, accusantium saepe ipsum.
-            </p>
-        </div>
+      <div class="image-container">
+        <img src="imagen_grande.jpg" alt="Imagen Grande" />
+      </div>
+      <div class="text-container">
+        <h2>Título del Texto</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem
+          nostrum repudiandae nesciunt odit natus, ut praesentium sapiente
+          officia ipsam exercitationem quibusdam eum impedit iusto, consequuntur
+          vitae tempora, accusantium saepe ipsum.
+        </p>
+      </div>
     </div>
-    
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-locatecontrol@0.73.0/dist/L.Control.Locate.min.js"></script>
-    
-    <script>
-        // Inicializar el mapa
-        var map = L.map('map').setView([24.044104, -104.627315], 20); // Coordenadas para México
 
-        // Añadir capa de mapa (OpenStreetMap)
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+    <script defer>
+      // Inicializar el mapa
+      var map = L.map("map").setView([24.044104, -104.627315], 20); // Coordenadas para México
 
-        // Añadir puntos de referencia al mapa
-        var puntosReferencia = [
-            {lat: 23.634501, lng: -102.552784}, // Punto 1
-            {lat: 19.432608, lng: -99.133209},  // Ciudad de México
-            {lat: 20.967370, lng: -89.592586}   // Mérida
-        ];
+      // Añadir capa de mapa (OpenStreetMap)
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(map);
 
-        puntosReferencia.forEach(function(punto) {
+      // Añadir puntos de referencia al mapa
+      var puntosReferencia = [];
+
+      async function fetching(data) {
+        try {
+          const response = await fetch("http://127.0.0.1:5000/lookAround", {
+            method: "POST", // Set method to POST
+            headers: {
+              "Content-Type": "application/json", // Specify JSON content
+            },
+            body: JSON.stringify({
+              query: data, // Send the preferences as the query
+            }),
+          });
+          const responseWithData = await response.json();
+          console.log(responseWithData);
+
+          responseWithData.forEach(function (punto) {
             L.circle([punto.lat, punto.lng], {
-                color: 'blue',
-                fillColor: '#30f',
-                fillOpacity: 0.5,
-                radius: 5 // Radio en metros
+              color: "green",
+              fillColor: "#40f",
+              fillOpacity: 0.5,
+              radius: 25, // Radio en metros
             }).addTo(map);
-        });
-
-        // Localización en tiempo real del usuario
-        L.control.locate().addTo(map);
-
-        // Alternar menú responsivo
-        document.getElementById("menu-toggle").addEventListener("click", function() {
-            var menu = document.getElementById("responsive-menu");
-            menu.classList.toggle("active");
-        });
-
-    // Capa de puntos en el mapa
-    var puntosMapa = [];
-
-    // Función para filtrar y mostrar los puntos en el mapa
-    function filtrarPuntos(categoria) {
-        // Limpiar los puntos actuales en el mapa
-        puntosMapa.forEach(function(punto) {
-            map.removeLayer(punto);
-        });
-        puntosMapa = [];
-
-        // Añadir los puntos de la categoría seleccionada
-        puntosPorCategoria[categoria].forEach(function(punto) {
-            var marcador = L.marker([punto.lat, punto.lng]).addTo(map).bindPopup(punto.nombre);
-            puntosMapa.push(marcador);
-        });
-    }
-
-    // Mostrar inicialmente todos los puntos de la primera categoría
-    filtrarPuntos('Restaurantes');
-
-    function fetchPlaces(preferences) {
-            fetch('http://127.0.0.1:5000/lookAround', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ query: preferences})
-            })
-            .then(response => response.json())
-            .then(data => {
-                clearMarkers(); // Limpiar los marcadores existentes
-                console.log("Holi el fetch");
-                data.forEach(place => {
-                    
-                    var marker = L.marker([place.lat, place.lng]).addTo(map)
-                        .bindPopup(`<b>${place.full_address}</b>`);
-                    markers.push(marker);
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching places:', error);
-            });
+          });
+        } catch (error) {
+          console.log(error);
         }
 
-        // Mostrar inicialmente una categoría
-        fetchPlaces('Restaurantes');
+        // .then((response) => {
+        //    /* console.log("type of de variable: ", typeof response.body)
+        //     console.log("data: ", response.json());*/
+        //     if (!response.ok) {
+        //       throw new Error("Failed to fetch places");
+        //     }
+
+        //     /*response.body.json().forEach(function (punto) {
+        //       L.circle([punto.lat, punto.lng], {
+        //         color: "blue",
+        //         fillColor: "#30f",
+        //         fillOpacity: 0.5,
+        //         radius: 5, // Radio en metros
+        //       }).addTo(map);
+        //     });*/
+
+        //     return response.json();
+        //   })
+        //   .catch((error) => {
+        //     console.error("Error fetching places:", error);
+        //   });
+      }
+      console.log("Data: " + fetching("oxxo"));
+
+      // Alternar menú responsivo
+      document
+        .getElementById("menu-toggle")
+        .addEventListener("click", function () {
+          var menu = document.getElementById("responsive-menu");
+          menu.classList.toggle("active");
+        }); // Call the function with a preference like "restaurant"
+
+      // // Mostrar inicialmente todos los puntos de la primera categoría
+      // filtrarPuntos("Restaurantes");
     </script>
-</body>
+  </body>
 </html>
