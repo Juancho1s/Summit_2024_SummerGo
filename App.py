@@ -17,6 +17,12 @@ def findPlaces():
     # Retrieve the query from the request body (assuming JSON input)
     query = request.json['query']
 
+    userData = {
+        "places": json.loads(data.decode("utf-8"))['results'],
+        "userId": 2,
+        "userLikes": "haburguesas, peliculas de terror, Comida china"
+    }
+
     # Perform the GET request to the external API
     conn.request("GET", f"/search-in-area?query={query}&lat=24.043829&lng=-104.627699&zoom=15&limit=10&language=en&region=us&extract_emails_and_contacts=false", headers=headers)
 
