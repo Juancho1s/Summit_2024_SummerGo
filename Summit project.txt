@@ -1,0 +1,5 @@
+Artificial intelligence use:
+	user recomendations according to tendencies of users
+	users profile customization and updating according with artificial intelligence
+	(recomendation) Automatic Scheduling (pricing, time, age clasification)
+	
