@@ -1,16 +1,18 @@
 import http.client
 import json
 from flask import Flask, jsonify, request, make_response  # Import Flask and related modules
+from flask_cors import CORS
 
 # Initialize Flask application
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/lookAround', methods=['POST'])
 def findPlaces():
     conn = http.client.HTTPSConnection("local-business-data.p.rapidapi.com")
 
     headers = {
-        'x-rapidapi-key': "37cde39179msh1fe7b3eb3112f2bp1d96c4jsn555548034447",
+        'x-rapidapi-key': "67f8123be2mshe653493aa87fba4p188bfejsna3a2e349e03e",
         'x-rapidapi-host': "local-business-data.p.rapidapi.com"
     }
 
@@ -24,7 +26,7 @@ def findPlaces():
     }
 
     # Perform the GET request to the external API
-    conn.request("GET", f"/search-in-area?query={query}&lat=24.043829&lng=-104.627699&zoom=15&limit=10&language=en&region=us&extract_emails_and_contacts=false", headers=headers)
+    conn.request("GET", f"/search-in-area?query={query}&lat=24.043829&lng=-104.627699&zoom=15&limit=&language=en&region=us&extract_emails_and_contacts=false", headers=headers)
 
     # Get the response from the API
     res = conn.getresponse()
