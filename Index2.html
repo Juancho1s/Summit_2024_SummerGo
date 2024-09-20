@@ -129,28 +129,6 @@
         } catch (error) {
           console.log(error);
         }
-
-        // .then((response) => {
-        //    /* console.log("type of de variable: ", typeof response.body)
-        //     console.log("data: ", response.json());*/
-        //     if (!response.ok) {
-        //       throw new Error("Failed to fetch places");
-        //     }
-
-        //     /*response.body.json().forEach(function (punto) {
-        //       L.circle([punto.lat, punto.lng], {
-        //         color: "blue",
-        //         fillColor: "#30f",
-        //         fillOpacity: 0.5,
-        //         radius: 5, // Radio en metros
-        //       }).addTo(map);
-        //     });*/
-
-        //     return response.json();
-        //   })
-        //   .catch((error) => {
-        //     console.error("Error fetching places:", error);
-        //   });
       }
       console.log("Data: " + fetching("oxxo"));
 
@@ -160,10 +138,7 @@
         .addEventListener("click", function () {
           var menu = document.getElementById("responsive-menu");
           menu.classList.toggle("active");
-        }); // Call the function with a preference like "restaurant"
-
-      // // Mostrar inicialmente todos los puntos de la primera categoría
-      // filtrarPuntos("Restaurantes");
+        });
     </script>
   </body>
 </html>
